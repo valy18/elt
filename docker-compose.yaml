@@ -1,0 +1,19 @@
+version: '3'
+
+
+services:
+  source_postgres:
+    image: postgres:lastest
+    ports:
+      -"5433:5432"
+    networks:
+      - elt_network
+    environment:
+      - POSTGRES_DB: source_db
+      - POSTGRES_USER: postgres
+      - POSTGRES_PASSWORD: secret
+
+
+networks:
+  elt_network:
+    driver: bridge
